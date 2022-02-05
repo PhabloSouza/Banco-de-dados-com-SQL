@@ -1,0 +1,51 @@
+DROP TABLE ALUNOS;
+
+
+CREATE table alunos
+(
+    ra int  PRIMARY KEY  AUTO_INCREMENT,
+    nome varchar (50) not null,
+    email varchar (50)  UNIQUE,
+    telefone  varchar(15),
+    cep char(9),
+    endereco varchar(50),
+    bairro varchar(50),
+    cidade varchar(50),
+    uf  char(2) ,
+    cpf char(14)  UNIQUE      
+);
+
+ALTER TABLE alunos ADD dataNasc date;
+
+alter table alunos ADD sexo char(1);
+
+alter table alunos MODIFY column telefone varchar(20);
+
+alter table alunos DROP COLUMN bairro;
+
+alter TABLE alunos CHANGE telefone Celular varchar(12);
+ou 
+ALTER TABLE `alunos` CHANGE `celular` `telefone` VARCHAR(20);
+
+
+---------------------------------------------
+CREATE TABLE DEPARTAMENTO
+(
+     CODIGO INT PRIMARY KEY AUTO_INCREMENT,
+     NOME   VARCHAR(50) NOT NULL
+);
+---------------------------------------------
+CREATE TABLE FUNCIONARIO
+(
+    MATRICULA INT PRIMARY KEY AUTO_INCREMENT,
+    NOME VARCHAR(50),
+    CIDADE VARCHAR(50),
+    CODDEPTO INT,
+    CONSTRAINT FK_FUNCIONARIO_DEPTO FOREIGN KEY (CODDEPTO) REFERENCES DEPARTAMENTO (CODIGO)
+);
+
+
+
+
+
+

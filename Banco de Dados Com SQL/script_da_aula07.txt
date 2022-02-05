@@ -1,0 +1,40 @@
+create table Departamento
+(   
+Codigo int primary key auto_increment,   
+Nome varchar(50)
+);
+
+create table Orientador
+(
+   Codigo int primary key auto_increment,
+   Nome varchar(50),
+   CodDepto int,
+   Constraint FK_orientador_depto foreign key (coddepto) references departamento (codigo)
+);
+
+create table Aluno
+(   
+   Codigo int primary key auto_increment,
+   Nome varchar(50),   
+   CodOrientador int,   
+   Constraint FK_Aluno_Orientador foreign key (codOrientador) references orientador (codigo)
+);
+
+create table Disciplina
+(   
+   Codigo int primary key auto_increment,
+   Nome varchar(50)
+);
+
+create table notas
+(
+   CodAluno int,
+   CodDisciplina int,
+   Media float,
+   Constraint FK_notas_aluno foreign key (codAluno) references aluno (codigo),
+   Constraint FK_notas_diciplina foreign key (coddisciplina) references disciplina (codigo),
+   Constraint PK_Notas Primary Key (CodAluno,CodDisciplina)  
+);
+
+ alter table notas ADD   Constraint FK_notas_aluno1 foreign key (codAluno) references aluno (codigo);
+alter table notas drop  Constraint FK_notas_aluno1 ;

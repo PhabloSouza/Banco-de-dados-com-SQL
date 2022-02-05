@@ -1,0 +1,41 @@
+Exercícios:
+
+1 - Dentro do banco de dados aula07, crie  a tabela Alunos (ra, nome, email e telefone).
+
+CREATE TABLE alunos
+(
+  ra int PRIMARY key AUTO_INCREMENT,
+  nome varchar(50),
+  email varchar(50),
+  telefone varchar(20)   
+);
+
+---------------------------------------------------------------------------------------------------
+2  - Inserir 5 alunos na tabela alunos (3 maneiras)
+
+insert into alunos (ra, nome, email, telefone)
+VALUES (null, 'José','jose@gmail.com','(11)243656768');
+
+// pode ser assim, pois primeiro campo é auto incremento
+insert into alunos (nome, email, telefone)
+VALUES ( 'Maria','maria@gmail.com','(11)98768558');
+
+insert into alunos VALUES (null, 'Daniela','daniela@gmail.com','(11)99765432');
+
+---------------------------------------------------------------------------------------------------------------
+3 - Alterar o email do José para jose.silva@gmail.com
+
+// mostar a tabela alunos
+select * from alunos;
+
+update alunos set email = 'jose.silva@gmail.com'
+where ra = 1;
+
+select * from alunos;
+
+UPDATE `alunos` SET `telefone`= CONCAT('55', telefone);
+ou 
+UPDATE alunos SET telefone = CONCAT('55', telefone);
+
+update alunos set telefone = '(11)243656768'
+where ra =1;
